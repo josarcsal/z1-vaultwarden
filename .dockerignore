@@ -8,6 +8,7 @@
 !macros
 !migrations
 !src
+!resources
 
 !build.rs
 !Cargo.lock

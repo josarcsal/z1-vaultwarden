@@ -152,6 +152,28 @@ WORKDIR /
 COPY docker/healthcheck.sh docker/start.sh /
 
 COPY --from=vault /web-vault ./web-vault
+
+# Copy logo files
+COPY resources/vaultwarden-logo.svg ./web-vault/images/logo.svg
+COPY resources/vaultwarden-logo-white.svg ./web-vault/images/logo-white.svg
+COPY resources/vaultwarden-logo.svg ./web-vault/images/logo-primary@2x.png
+COPY resources/vaultwarden-logo.svg ./web-vault/images/logo-dark@2x.png
+COPY resources/vaultwarden-logo-white.svg ./web-vault/images/logo-white@2x.png
+COPY resources/vaultwarden-logo-white.svg ./web-vault/images/logo-horizontal-white.png
+COPY resources/vaultwarden-logo-white.svg ./web-vault/images/logo-horizontal-white@2x.png
+
+# Copy icon files
+COPY resources/vaultwarden-icon.svg ./web-vault/images/icon-dark.png
+COPY resources/vaultwarden-icon-white.svg ./web-vault/images/icon-white.png
+COPY resources/vaultwarden-icon-white.svg ./web-vault/images/icon-white.svg
+
+# Copy favicon files
+COPY src/static/images/vaultwarden-favicon.png ./web-vault/images/favicon-16x16.png
+COPY src/static/images/vaultwarden-icon.png ./web-vault/images/favicon-32x32.png
+COPY src/static/images/vaultwarden-icon.png ./web-vault/images/favicon.ico
+COPY src/static/images/vaultwarden-icon.png ./web-vault/images/apple-touch-icon.png
+COPY src/static/images/vaultwarden-favicon.png ./web-vault/favicon.ico
+
 COPY --from=build /app/target/final/vaultwarden .
 
 HEALTHCHECK --interval=60s --timeout=10s CMD ["/healthcheck.sh"]

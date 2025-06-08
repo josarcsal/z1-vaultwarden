@@ -8,9 +8,3 @@ data
 .vscode
 .idea
 *.iml
-
-# Environment file
-.env
-
-# Web vault
-web-vault
